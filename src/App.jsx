@@ -1,13 +1,16 @@
-export default function App() {
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Welcome from "./Welcome";
+import Game from "./Game";
+
+function App() {
   return (
-    <main>
-      <h1>Whack a Mole</h1>
-      <p>Welcome to Whack a Mole!</p>
-      <p>Whack a mole to earn points.</p>
-      <p>How many can you get?</p>
-      <button>Play</button>
-      <h2>High Scores</h2>
-      <p>None yet...Play the game!</p>
-    </main>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Welcome />} />
+        <Route path="/game" element={<Game />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
+
+export default App;
