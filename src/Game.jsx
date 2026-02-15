@@ -4,6 +4,9 @@ import "./game.css";
 export default function Game() {
   const { score, setPage } = useGame();
 
+  // determine initial location of mole
+  const moleLocation = Math.floor(Math.random() * 9);
+
   return (
     <main>
       <nav>
@@ -19,9 +22,10 @@ export default function Game() {
       <div className="game-area">
         <ul>
           {Array.from({ length: 9 }).map((_, i) => (
-            <li key={i} className="hole">
-              .
-            </li>
+            <li
+              key={i}
+              className={i === moleLocation ? "hole mole" : "hole"}
+            ></li>
           ))}
         </ul>
       </div>
