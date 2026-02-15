@@ -2,11 +2,10 @@ import "./welcome.css";
 import { useGame } from "./GameContext";
 
 export default function Welcome() {
-  const { page, setPage } = useGame();
+  const { setPage } = useGame();
   return (
     <main>
       <section className="welcome">
-        <h1>Whack a Mole</h1>
         <p>Welcome to Whack a Mole!</p>
         <p>Whack a mole to earn points!</p>
         <p>How many can you get?</p>
