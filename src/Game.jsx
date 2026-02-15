@@ -2,13 +2,19 @@ import { useGame } from "./GameContext";
 
 import "./game.css";
 export default function Game() {
-  const { score } = useGame();
+  const { score, setPage } = useGame();
 
   return (
     <main>
       <nav>
         <button>Score: {score}</button>
-        <button>Restart</button>
+        <button
+          onClick={() => {
+            setPage("welcome");
+          }}
+        >
+          Restart
+        </button>
       </nav>
       <div className="game-area">
         <ul>
