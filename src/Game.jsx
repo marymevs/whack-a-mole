@@ -2,7 +2,7 @@ import { useGame } from "./GameContext";
 
 import "./game.css";
 export default function Game() {
-  const { score, setPage } = useGame();
+  const { score, setScore, setPage } = useGame();
 
   // determine initial location of mole
   const moleLocation = Math.floor(Math.random() * 9);
@@ -23,6 +23,9 @@ export default function Game() {
         <ul>
           {Array.from({ length: 9 }).map((_, i) => (
             <li
+              onClick={() => {
+                setScore(score + 1);
+              }}
               key={i}
               className={i === moleLocation ? "hole mole" : "hole"}
             ></li>
