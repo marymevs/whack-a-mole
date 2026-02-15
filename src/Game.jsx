@@ -24,9 +24,7 @@ export default function Game() {
           {Array.from({ length: 9 }).map((_, i) => (
             <li
               onClick={() => {
-                if (i === moleLocation) {
-                  setScore(score + 1);
-                }
+                updateScore(i, moleLocation, score, setScore);
               }}
               key={i}
               className={i === moleLocation ? "hole mole" : "hole"}
@@ -36,4 +34,10 @@ export default function Game() {
       </div>
     </main>
   );
+}
+
+function updateScore(i, moleLocation, score, setScore) {
+  if (i === moleLocation) {
+    setScore(score + 1);
+  }
 }
