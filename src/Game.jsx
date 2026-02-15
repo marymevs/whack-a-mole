@@ -13,7 +13,7 @@ export default function Game() {
         <button>Score: {score}</button>
         <button
           onClick={() => {
-            setPage("welcome");
+            restartGame(setScore, setPage);
           }}
         >
           Restart
@@ -40,4 +40,9 @@ function updateScore(i, moleLocation, score, setScore) {
   if (i === moleLocation) {
     setScore(score + 1);
   }
+}
+
+function restartGame(setScore, setPage) {
+  setScore(0);
+  setPage("welcome");
 }
