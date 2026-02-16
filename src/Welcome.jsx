@@ -3,12 +3,11 @@ import { useGame } from "./GameContext";
 
 export default function Welcome() {
   const { setPage, scores } = useGame();
-  let scoreId = 0;
   return (
     <main>
       <section className="welcome">
         <p>Welcome to Whack a Mole!</p>
-        <p>Whack a mole to earn points!</p>
+        <p>Whack a mole to earn points.</p>
         <p>How many can you get?</p>
         <button
           onClick={() => {
@@ -23,8 +22,8 @@ export default function Welcome() {
         <div>
           {scores.length > 0 ? (
             <ul>
-              {scores.map((score) => (
-                <li key={scoreId++}>{score}</li>
+              {scores.map((score, i) => (
+                <li key={i}>{score}</li>
               ))}
             </ul>
           ) : (
