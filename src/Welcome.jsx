@@ -2,7 +2,8 @@ import "./welcome.css";
 import { useGame } from "./GameContext";
 
 export default function Welcome() {
-  const { setPage } = useGame();
+  const { setPage, scores } = useGame();
+  let scoreId = 0;
   return (
     <main>
       <section className="welcome">
@@ -19,7 +20,17 @@ export default function Welcome() {
       </section>
       <section className="high-score">
         <h2>High Scores</h2>
-        <p>None yet... Play the game!</p>
+        <div>
+          {scores.length > 0 ? (
+            <ul>
+              {scores.map((score) => (
+                <li key={scoreId++}>{score}</li>
+              ))}
+            </ul>
+          ) : (
+            "None yet... Play the game!"
+          )}
+        </div>
       </section>
     </main>
   );

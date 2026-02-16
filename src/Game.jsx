@@ -2,7 +2,7 @@ import { useGame } from "./GameContext";
 
 import "./game.css";
 export default function Game() {
-  const { score, setScore, setPage } = useGame();
+  const { score, scores, setScore, setScores, setPage } = useGame();
 
   // determine initial location of mole
   const moleLocation = Math.floor(Math.random() * 9);
@@ -13,7 +13,7 @@ export default function Game() {
         <button>Score: {score}</button>
         <button
           onClick={() => {
-            restartGame(setScore, setPage);
+            restartGame(score, scores, setScore, setScores, setPage);
           }}
         >
           Restart
@@ -42,7 +42,8 @@ function updateScore(i, moleLocation, score, setScore) {
   }
 }
 
-function restartGame(setScore, setPage) {
+function restartGame(score, scores, setScore, setScores, setPage) {
+  setScores([...scores, score]);
   setScore(0);
   setPage("welcome");
 }

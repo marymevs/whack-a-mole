@@ -3,10 +3,11 @@ import { createContext, useState, useContext } from "react";
 const GameContext = createContext();
 
 export default function GameProvider({ children }) {
-  const [score, setScore] = useState(0);
   const [page, setPage] = useState("welcome");
+  const [score, setScore] = useState(0);
+  const [scores, setScores] = useState([]);
 
-  const value = { score, setScore, page, setPage };
+  const value = { page, setPage, score, setScore, scores, setScores };
 
   return <GameContext.Provider value={value}>{children}</GameContext.Provider>;
 }
