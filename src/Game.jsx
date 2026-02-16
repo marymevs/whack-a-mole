@@ -4,13 +4,25 @@ import "./game.css";
 export default function Game() {
   const { score, scores, setScore, setScores, setPage } = useGame();
 
-  // determine initial location of mole
-  const moleLocation = Math.floor(Math.random() * 9);
+  // determine location of mole
+  let moleLocation = Math.floor(Math.random() * 9);
+
+  let secondsLeft = 15;
+  const intervalId = window.setInterval(timer, 1000);
+
+  function timer() {
+    secondsLeft--;
+    console.log(secondsLeft);
+    if (secondsLeft === 0) {
+      window.clearInterval(intervalId); // why does this work?
+    }
+  }
 
   return (
     <main>
       <nav>
         <button>Score: {score}</button>
+        <button>Timer: {secondsLeft /*not updating*/}</button>
         <button
           onClick={() => {
             restartGame(score, scores, setScore, setScores, setPage);

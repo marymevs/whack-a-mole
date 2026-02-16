@@ -7,7 +7,14 @@ export default function GameProvider({ children }) {
   const [score, setScore] = useState(0);
   const [scores, setScores] = useState([]);
 
-  const value = { page, setPage, score, setScore, scores, setScores };
+  const value = {
+    page,
+    setPage,
+    score,
+    setScore,
+    scores,
+    setScores,
+  };
 
   return <GameContext.Provider value={value}>{children}</GameContext.Provider>;
 }
