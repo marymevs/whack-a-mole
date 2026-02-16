@@ -7,7 +7,6 @@ import App from "./App.jsx";
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <GameProvider>
-      <h1>Whack a Mole</h1>
       <App />
     </GameProvider>
   </StrictMode>,
