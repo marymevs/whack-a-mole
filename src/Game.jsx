@@ -2,7 +2,7 @@ import { useGame } from "./GameContext";
 
 import "./game.css";
 export default function Game() {
-  const { score, scores, setScore, setScores, setPage } = useGame();
+  const { score, restartGame, updateScore } = useGame();
 
   // determine location of mole
   let moleLocation = Math.floor(Math.random() * 9);
@@ -23,20 +23,14 @@ export default function Game() {
       <nav>
         <button>Score: {score}</button>
         <button>Timer: {secondsLeft /*not updating*/}</button>
-        <button
-          onClick={() => {
-            restartGame(score, scores, setScore, setScores, setPage);
-          }}
-        >
-          Restart
-        </button>
+        <button onClick={restartGame}>Restart</button>
       </nav>
       <div className="game-area">
         <ul>
           {Array.from({ length: 9 }).map((_, i) => (
             <li
               onClick={() => {
-                updateScore(i, moleLocation, score, setScore);
+                updateScore(i, moleLocation);
               }}
               key={i}
               className={i === moleLocation ? "hole mole" : "hole"}
@@ -46,16 +40,4 @@ export default function Game() {
       </div>
     </main>
   );
-}
-
-function updateScore(i, moleLocation, score, setScore) {
-  if (i === moleLocation) {
-    setScore(score + 1);
-  }
-}
-
-function restartGame(score, scores, setScore, setScores, setPage) {
-  setScores([...scores, score]);
-  setScore(0);
-  setPage("welcome");
 }
