@@ -14,6 +14,22 @@ export default function GameProvider({ children }) {
     setScore,
     scores,
     setScores,
+    time,
+    setTime,
+    restartGame,
+    updateScore,
+  };
+
+  const updateScore = (i, moleLocation) => {
+    if (i === moleLocation) {
+      setScore(score + 1);
+    }
+  };
+
+  const restartGame = () => {
+    setScores([...scores, score]);
+    setScore(0);
+    setPage("welcome");
   };
 
   return <GameContext.Provider value={value}>{children}</GameContext.Provider>;
